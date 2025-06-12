@@ -1,0 +1,31 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<body class="bg-light" style="font-family: 'Helvetica Neue', sans-serif;">
+    <div class="container py-5 d-flex justify-content-center align-items-start">
+        <div class="card shadow-lg p-4 w-100" style="max-width: 750px; border-radius: 20px;">
+            <h2 class="mb-4 text-center fw-bold"><%= list.title %></h2>
+
+            <img src="<%= list.image %>" alt="<%= list.title %> image" class="img-fluid rounded-4 mb-4" style="object-fit: cover; height: 350px; width: 100%;">
+
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">
+                    <strong>Description:</strong> <%= list.description %>
+                </li>
+                <li class="list-group-item">
+                    <strong>Price:</strong> ₹<%= list.price.toLocaleString() %>
+                </li>
+                <li class="list-group-item">
+                    <strong>Location:</strong> <%= list.location %>, <%= list.country %>
+                </li>
+            </ul>
+
+            <div class="d-flex justify-content-between">
+                <a href="/listings/<%= list.id %>/edit" class="btn btn-outline-dark">Edit Listing</a>
+
+                <form action="/listings/<%= list._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger" style="background-color: #FF385C; border: none;">Delete Listing</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

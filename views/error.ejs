@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="text-center">
+    <h1 class="display-4 text-danger">Oops! <%= err.statusCode || 500 %> Error</h1>
+    <p class="lead mb-4"><%= err.message || "Something went wrong on the server." %></p>
+
+    <a href="/listings" class="btn btn-primary px-4 py-2">
+      Go Back Home
+    </a>
+  </div>
+</div>
