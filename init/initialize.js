@@ -19,7 +19,7 @@ async function init(){
         let reintilizedData = sampleData.data.map((listing)=>{
             return {
                   ...listing,
-            owner:'68503c693e79554631ebecaf'
+            owner:'6853e302709ee7fd6f29ba92'
             }
            
         });

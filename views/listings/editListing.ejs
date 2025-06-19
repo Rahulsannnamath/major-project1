@@ -5,7 +5,7 @@
         <div class="w-100" style="max-width: 700px;">
             <h2 class="mb-4 fw-semibold text-center">Update Listing</h2>
 
-            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" id="title" name="title" value="<%= listing.title %>" placeholder="Add a catchy title" class="form-control rounded-3 shadow-sm border-light" required>
@@ -17,9 +17,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image Link</label>
-                    <input type="url" id="image" name="image" value="<%= listing.image %>" placeholder="Enter image URL/Link" class="form-control rounded-3 shadow-sm border-light" required>
-                </div>
+                    <label for="image" class="form-label">Upload New image(optional)</label>
+                    <input type="file" id="image" name="image" accept="image/*" class="form-control rounded-3 shadow-sm border-light">
+                    <div class="valid-feedback">Image selected!</div>
+                    <div class="invalid-feedback">Please upload an image file.</div>
+                  </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
