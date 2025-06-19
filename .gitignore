@@ -1,0 +1,41 @@
+# 🔒 Sensitive config files
+.env
+
+# 🧠 Node modules (very heavy, don't upload)
+node_modules/
+
+# 💾 OS-specific junk
+.DS_Store
+Thumbs.db
+
+# 📦 Package locks (optional, but safer to exclude one)
+package-lock.json
+yarn.lock
+
+# 📸 Upload folders (if you temporarily use local uploads before Cloudinary)
+uploads/
+temp/
+public/uploads/
+
+# 🐛 Logs
+logs/
+*.log
+
+# ⚙️ IDE/editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 🚀 Build cache (if using build tools like webpack)
+dist/
+build/
+.cache/
+
+# ⚛️ React (if frontend folder exists)
+client/node_modules/
+client/build/
+client/.env
+client/.DS_Store

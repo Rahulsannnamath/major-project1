@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<link rel="stylesheet" href="/css/signup.css">
+
+<div class="signup-container">
+  <form class="signup-form" action="/users/signup" method="POST">
+    <h2 class="form-title">Welcome to Wandurlust</h2>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required placeholder="Your username">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Enter a password">
+    </div>
+
+    <button type="submit" class="submit-btn">Sign Up</button>
+
+    <p class="login-link">Already have an account? <a href="/users/login">Log in</a></p>
+  </form>
+</div>

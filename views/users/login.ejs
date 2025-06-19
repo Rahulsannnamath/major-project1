@@ -1,0 +1,38 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<% if (error && error.length > 0) { %>
+    <% error.forEach(msg => { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% }) %>
+  <% } %>
+  
+
+<div class="signup-container">
+  <form class="signup-form" action="/users/login" method="POST">
+    <h2 class="form-title">Login to Wandurlust</h2>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required placeholder="Your username">
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Enter a password">
+    </div>
+
+    <button type="submit" class="submit-btn">login</button>
+
+    <p class="login-link">dont have an account? <a href="/users/signup">sign up</a></p>
+
+   
+  </form>
+  
+</div>
+
+
