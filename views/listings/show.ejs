@@ -126,21 +126,29 @@
         </form> -->
       </div>
 
+
     </div>
   </div>
-      
-  
     
+  <div class="col-12 col-md-10 offset-md-1">
+    <div class="card p-3 shadow-sm mb-4">
+      <h4 class="fw-semibold mb-3">Where you'll be</h4>
+      <div id="map"></div>
+    </div>
+</div>
 
-
-
-      <!-- All Reviews Section -->
-      
-        <!-- <form action="">
-          <button class="btn btn-sm btn-dark">DELETE</button>
-        </form> -->
       </div>
 
     </div>
   </div>
+
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FubmFtYXRoIiwiYSI6ImNtYzRleXI1dzAwanAyanF5ZDNzYTd2MXEifQ.c3vCrWWeMNlW93TIL9tQog';
+      const map = new mapboxgl.Map({
+          container: 'map', // container ID
+          center: [73.8786, 18.5246], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+          zoom: 9 // starting zoom
+      });
+  </script>
 </body>

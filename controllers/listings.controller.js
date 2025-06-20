@@ -1,4 +1,7 @@
 const Listing = require("../models/listing");
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapToken = "pk.eyJ1Ijoic2FubmFtYXRoIiwiYSI6ImNtYzRleXI1dzAwanAyanF5ZDNzYTd2MXEifQ.c3vCrWWeMNlW93TIL9tQog";
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
 module.exports.index = async (req, res) => {
@@ -20,6 +23,13 @@ module.exports.show = async (req, res) => {
 }
 
 module.exports.postListing = async (req, res) => {
+    let response = await geocodingClient.forwardGeocode({
+        query: req.body.location,
+        limit: 1
+      }).send()
+
+console.log(response.body.features[0].geometry.coordinates);
+
     let url = req.file.path;
     let filename = req.file.filename;
     let { title, description, price, location, country } = req.body;
@@ -49,15 +59,32 @@ module.exports.editForm = async (req, res) => {
 
 module.exports.updateListing =async (req, res) => {
     let { id } = req.params;
-    let { title, description, price, location, country, image } = req.body;
+    let { title, description, price, location, country} = req.body;
+    if(typeof req.file !== "undefined"){
+        let url = req.file.path;
+    let filename = req.file.filename;
     await Listing.findByIdAndUpdate(id, {
         title,
         description,
         price,
         location,
         country,
-        image
+        image :{
+            url:url,
+            filename:filename
+        }
     });
+}
+
+else{
+    await Listing.findByIdAndUpdate(id, {
+        title,
+        description,
+        price,
+        location,
+        country, });
+}
+    
     res.redirect("/listings/" + id);
 }
 

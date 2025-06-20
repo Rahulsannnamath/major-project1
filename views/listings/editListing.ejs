@@ -13,8 +13,26 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <input type="text" id="description" name="description" value="<%= listing.description %>" placeholder="Enter a short description" class="form-control rounded-3 shadow-sm border-light" required>
-                </div>
+                    <textarea 
+                      id="description" 
+                      name="description" 
+                      placeholder="Enter a short description" 
+                      class="form-control rounded-3 shadow-sm border-light" 
+                      rows="4" 
+                      required><%= listing.description %></textarea>
+                  </div>
+                  
+                 
+                  <h2>Current image</h3>
+                <div class="mb-4 border rounded-4 shadow-sm overflow-hidden" style="height: 300px;">
+                    <img 
+                      src="<%= listing.image.url %>" 
+                      alt="Current Listing Image" 
+                      class="w-100 h-100" 
+                      style="object-fit: cover;">
+                  </div>
+                  
+                  
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload New image(optional)</label>
