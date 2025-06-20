@@ -1,4 +1,8 @@
 <% layout("layouts/boilerplate.ejs") %>
+<script>
+  const mapToken = "pk.eyJ1Ijoic2FubmFtYXRoIiwiYSI6ImNtYzRleXI1dzAwanAyanF5ZDNzYTd2MXEifQ.c3vCrWWeMNlW93TIL9tQog";
+  const coordinates = JSON.parse("<%- JSON.stringify(list.geometry.coordinates) %>");
+</script>
 
 <body class="bg-light" style="font-family: 'Helvetica Neue', sans-serif;">
   <div class="container py-5 d-flex justify-content-center align-items-start">
@@ -141,14 +145,6 @@
 
     </div>
   </div>
-
-
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FubmFtYXRoIiwiYSI6ImNtYzRleXI1dzAwanAyanF5ZDNzYTd2MXEifQ.c3vCrWWeMNlW93TIL9tQog';
-      const map = new mapboxgl.Map({
-          container: 'map', // container ID
-          center: [73.8786, 18.5246], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-          zoom: 9 // starting zoom
-      });
-  </script>
+  <script src="/js/map.js"></script>
+  
 </body>

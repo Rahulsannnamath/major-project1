@@ -28,8 +28,6 @@ module.exports.postListing = async (req, res) => {
         limit: 1
       }).send()
 
-console.log(response.body.features[0].geometry.coordinates);
-
     let url = req.file.path;
     let filename = req.file.filename;
     let { title, description, price, location, country } = req.body;
@@ -43,7 +41,14 @@ console.log(response.body.features[0].geometry.coordinates);
             url:url,
             filename:filename
         },
-       owner:req.user._id
+       owner:req.user._id ,
+
+       geometry:{
+        type : response.body.features[0].geometry.type,
+        coordinates:response.body.features[0].geometry.coordinates
+       },
+
+    
     });
 
     req.flash("success" , "new Listing created!");
