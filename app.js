@@ -78,15 +78,15 @@ app.listen(8080, () => {
     console.log("server is at 8080");
 });
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 
 app.use("/listings",List);
 app.use("/listings/:id/reviews",reviewRoute);
 app.use("/users",userRoute);
 
-app.get("/", (req, res) => {
-    res.redirect("/listings");
-});
 
 
 
