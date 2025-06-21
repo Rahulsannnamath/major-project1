@@ -8,6 +8,7 @@ const ExpressError=require("./utils/expressError");
 const List = require("./routes/listings");
 const reviewRoute = require("./routes/reviews");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');  
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -15,9 +16,20 @@ const User = require("./models/user");
 const userRoute = require("./routes/user");
 require('dotenv').config();
 
+const dbUrl = process.env.MONGO_ATLAS;
+const store = MongoStore.create({
+mongoUrl: dbUrl,
+crypto: {
+secret: process.env.SECRET,
+},
+touchAfter: 24 * 3600,
+});
+
+
 
 const sessionOptions = {
-    secret:"mysecretkey",
+    store:store,
+    secret: process.env.SECRET,
     resave : false,
     saveUninitialized: true,
     cookie :{
