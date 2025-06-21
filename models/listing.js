@@ -35,7 +35,13 @@ const ListingSchema = new mongoose.Schema({
       type: [Number],
       required: true
     }
-    }
+    },
+
+  category:{
+    type:String,
+    enum:["Rooms","Apartments","Villas","Farm stays","Beach","Mountain"]
+  }
+
 });
 
 ListingSchema.post("findOneAndDelete",async (doc)=>{

@@ -5,8 +5,17 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
 module.exports.index = async (req, res) => {
-    let allListing = await Listing.find({});
-    res.render("listings/index", { allListing });
+    let {category} = req.query;
+    if(category){
+        let allListing = await Listing.find({category});
+        res.render("listings/index", { allListing });
+    }
+
+    else{
+        let allListing = await Listing.find({});
+        res.render("listings/index", { allListing });
+    }
+    
 }
 
 module.exports.new = (req, res) => {
@@ -30,7 +39,7 @@ module.exports.postListing = async (req, res) => {
 
     let url = req.file.path;
     let filename = req.file.filename;
-    let { title, description, price, location, country } = req.body;
+    let { title, description, price, location, country , category} = req.body;
     await Listing.create({
         title,
         description,
@@ -47,6 +56,7 @@ module.exports.postListing = async (req, res) => {
         type : response.body.features[0].geometry.type,
         coordinates:response.body.features[0].geometry.coordinates
        },
+       category
 
     
     });

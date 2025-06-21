@@ -9,33 +9,85 @@
   <% }) %>
 <% } %>
 
-
 <body>
 
-    <h3>All Listings</h3>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    
-        <% for(let listing of allListing)  { %>
-          <a href="/listings/<%= listing._id %>" class="listing-link">
-               
-            <div class="card">
-                <img src="<%= listing.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
-                <div class="card-body">
-                  <p class="card-text">
-                    <br>
-             <b><%= listing.title %></b>
-                  <br>
-        
-                  &#8377;<%= listing.price.toLocaleString() %> /night
-                </p>
-                </div>
-              </div>
-</a>
-
-              <% } %>
-
-
+  <!-- Filter UI -->
+  <div class="container my-4">
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+  
+      <!-- <a href="/listings?category=Trending" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-fire text-danger me-2"></i>Trending
+      </a>
+   -->
+      <a href="/listings?category=Rooms" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-door-open text-primary me-2"></i>Rooms
+      </a>
+  
+      <a href="/listings?category=Apartments" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-building text-secondary me-2"></i>Apartments
+      </a>
+  
+      <a href="/listings?category=Villas" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-vihara text-success me-2"></i>Villas
+      </a>
+  
+      <a href="/listings?category=Farm%20stays" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-tractor text-warning me-2"></i>Farm stays
+      </a>
+  
+      <a href="/listings?category=Mountain" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-mountain text-info me-2"></i>Mountain
+      </a>
+  
+      <a href="/listings?category=Beach" class="btn btn-light border shadow-sm rounded-pill px-4 py-2 text-decoration-none">
+        <i class="fas fa-umbrella-beach text-danger me-2"></i>Beach
+      </a>
+  
     </div>
-   
+  </div>
+  
+    <br> <br>
+
+    <!-- TAX Toggle Switch
+    <div class="form-check form-switch text-center mt-4">
+      <input class="form-check-input" type="checkbox" id="taxSwitch">
+      <label class="form-check-label ms-2" for="taxSwitch" style="font-weight: 500;">Include Taxes (18%)</label>
+    </div>
+  </div> -->
+
+  <!-- Listings -->
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 px-3">
+    <% for(let listing of allListing)  { %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="..." style="height: 20rem; object-fit: cover;">
+            <div class="card-body">
+              <p class="card-text mb-1"><b><%= listing.title %></b></p>
+              <p class="card-text price" data-base="<%= listing.price %>">
+                &#8377;<%= listing.price.toLocaleString() %> /night
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Tax Toggle Script -->
+  <!-- <script>
+    const taxSwitch = document.getElementById('taxSwitch');
+    const priceElements = document.querySelectorAll('.price');
+
+    taxSwitch.addEventListener('change', () => {
+      priceElements.forEach(el => {
+        const base = parseFloat(el.dataset.base);
+        const taxed = base * 1.18;
+        el.innerHTML = taxSwitch.checked
+          ? `&#8377;${taxed.toLocaleString(undefined, {maximumFractionDigits: 0})} <small class="text-muted">incl. tax</small> /night`
+          : `&#8377;${base.toLocaleString()} /night`;
+      });
+    });
+  </script> -->
 
 </body>

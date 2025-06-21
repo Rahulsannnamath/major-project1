@@ -13,6 +13,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const userRoute = require("./routes/user");
+require('dotenv').config();
 
 
 const sessionOptions = {
@@ -42,9 +43,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
 async function main() {
     try {
-        const connection = await mongoose.connect('mongodb://127.0.0.1:27017/wandurlust');
+        const connection = await mongoose.connect(process.env.MONGO_ATLAS);
         console.log("database is connected");
     } catch (err) {
         console.log(err);

@@ -28,19 +28,26 @@
           <i class="bi bi-person-circle me-2" style="font-size: 1.5rem; color: #FF385C;"></i>
           <span class="fw-semibold text-secondary"> owner of listing @<%= list.owner.username %></span>
         </div>
-      <!-- Listing Details -->
-      <ul class="list-group list-group-flush mb-4">
-        <li class="list-group-item">
-          <strong>Description:</strong> <%= list.description %>
-        </li>
-        <li class="list-group-item">
-          <strong>Price:</strong> ₹<%= list.price.toLocaleString() %>
-        </li>
-        <li class="list-group-item">
-          <strong>Location:</strong> <%= list.location %>, <%= list.country %>
-        </li>
-      </ul>
-
+     
+        <!-- Listing Details -->
+<ul class="list-group list-group-flush mb-4">
+  <li class="list-group-item">
+    <strong>Description:</strong> <%= list.description %>
+  </li>
+  <li class="list-group-item">
+    <strong>Category:</strong> 
+    <span class="badge rounded-pill bg-secondary ms-1">
+      <%= list.category %>
+    </span>
+  </li>
+  <li class="list-group-item">
+    <strong>Price:</strong> ₹<%= list.price.toLocaleString() %>
+  </li>
+  <li class="list-group-item">
+    <strong>Location:</strong> <%= list.location %>, <%= list.country %>
+  </li>
+</ul>
+ 
  
       <% if (currentUser && currentUser._id.equals(list.owner._id)) { %>
        

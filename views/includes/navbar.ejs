@@ -1,37 +1,35 @@
 <nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+  <div class="container-fluid position-relative">
 
-    <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarNavAltMarkup" 
-      aria-controls="navbarNavAltMarkup" 
-      aria-expanded="false" 
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav me-auto">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add New Listing</a>
-
-      </div>
-
-      <div class="navbar-nav">
-        <% if (currentUser) { %>
-          <span class="nav-link disabled">Welcome, <%= currentUser.username %></span>
-          <form action="/users/logout" method="POST" class="d-inline">
-            <button class="nav-link btn btn-link" type="submit">Logout</button>
-          </form>
-        <% } else { %>
-          <a class="nav-link" href="/users/signup">Sign Up</a>
-          <a class="nav-link" href="/users/login">Login</a>
-        <% } %>
-      </div>
+    <!-- Left Section -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand me-3" href="/">
+        <i class="fa-solid fa-compass fs-4 text-danger"></i>
+      </a>
+      <a class="nav-link d-none d-lg-block" href="/listings">Explore</a>
     </div>
+
+    <!-- Center Brand Name -->
+    <div class="position-absolute start-50 translate-middle-x text-center">
+      <span class="navbar-text text-danger fw-bold"
+        style="font-family: 'Pacifico', cursive; font-size: 2.2rem; letter-spacing: 1px;">
+        Wandurlust
+      </span>
+    </div>
+
+    <!-- Right User Options -->
+    <div class="navbar-nav ms-auto d-flex align-items-center gap-2">
+      <a class="nav-link" href="/listings/new">Add New Listing</a>
+      <% if (currentUser) { %>
+        <span class="nav-link disabled">Welcome, <%= currentUser.username %></span>
+        <form action="/users/logout" method="POST" class="d-inline">
+          <button class="nav-link btn btn-link" type="submit">Logout</button>
+        </form>
+      <% } else { %>
+        <a class="nav-link" href="/users/signup">Sign Up</a>
+        <a class="nav-link" href="/users/login">Login</a>
+      <% } %>
+    </div>
+
   </div>
 </nav>

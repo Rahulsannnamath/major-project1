@@ -19,8 +19,10 @@ main();
 
 async function init() {
   try {
+    const categories = ["Rooms", "Apartments", "Villas", "Farm stays", "Beach"];
+
     const reintializedData = await Promise.all(sampleData.data.map(async (listing) => {
-      // Fetch coordinates for the listing location
+      // Get coordinates from Mapbox
       const geoData = await geocodingClient
         .forwardGeocode({
           query: listing.location,
@@ -30,18 +32,23 @@ async function init() {
 
       const coordinates = geoData.body.features[0]?.geometry?.coordinates || [0, 0];
 
+      // Pick a random category
+      const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+
       return {
         ...listing,
         owner: '6853e302709ee7fd6f29ba92',
         geometry: {
           type: 'Point',
           coordinates: coordinates
-        }
+        },
+        category: randomCategory
       };
     }));
 
+    await Listing.deleteMany({}); 
     await Listing.insertMany(reintializedData);
-    console.log("Database Initialized with Coordinates");
+    console.log("Database Initialized with Random Categories & Coordinates");
   } catch (err) {
     console.error("Initialization Error:", err);
   }
