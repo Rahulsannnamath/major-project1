@@ -74,7 +74,7 @@ res.locals.currentUser = req.user;
 next();
 });
 
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
     console.log("server is at 8080");
 });
 
