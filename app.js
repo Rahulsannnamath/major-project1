@@ -74,7 +74,7 @@ res.locals.currentUser = req.user;
 next();
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log("server is at 8080");
 });
 
@@ -88,6 +88,9 @@ app.use("/listings/:id/reviews",reviewRoute);
 app.use("/users",userRoute);
 
 
+app.get("/health",(req,res)=>{
+res.send("server is up");
+});
 
 
 app.use((req, res, next) => {
