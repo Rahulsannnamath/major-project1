@@ -23,6 +23,21 @@
 
     <button type="submit" class="submit-btn">Sign Up</button>
 
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <!-- Demo Login Button -->
+    <button type="submit"
+            class="submit-btn demo-btn"
+            formaction="/users/login"
+            formmethod="POST"
+            name="demo"
+            value="true"
+            onclick="this.form.username.value='admin'; this.form.password.value='admin'; this.form.email && (this.form.email.value='admin@demo.com')">
+      Demo Login
+    </button>
+
     <p class="login-link">Already have an account? <a href="/users/login">Log in</a></p>
   </form>
 </div>

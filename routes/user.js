@@ -13,9 +13,22 @@ router.route("/signup")
 .post(wrapAsync(userRoute.postsignUpForm));
 
 router.route("/login")
-.get(userRoute.loginForm)
-.post(saveUrl,passport.authenticate("local",{failureRedirect:"/users/login",failureFlash:true}),
-userRoute.postLoginForm);
+  .get(userRoute.loginForm)
+  .post(
+    saveUrl,  
+    (req, res, next) => {          
+      if (req.body.demo === "true") {
+        req.body.username = "admin";
+        req.body.password = "admin";
+      }
+      next(); 
+    },
+    passport.authenticate("local", {
+      failureRedirect: "/users/login",
+      failureFlash: true
+    }), 
+    userRoute.postLoginForm        
+  );
 
 
 router.post("/logout",userRoute.logout);

@@ -1,16 +1,16 @@
 <% layout("layouts/boilerplate.ejs") %>
 
 <% if (error && error.length > 0) { %>
-    <% error.forEach(msg => { %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <%= msg %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <% }) %>
-  <% } %>
-  
+  <% error.forEach(msg => { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% }) %>
+<% } %>
 
 <div class="signup-container">
+  <!-- 👤 Unified Login Form -->
   <form class="signup-form" action="/users/login" method="POST">
     <h2 class="form-title">Login to Wandurlust</h2>
 
@@ -19,20 +19,23 @@
       <input type="text" id="username" name="username" required placeholder="Your username">
     </div>
 
-
-
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required placeholder="Enter a password">
     </div>
 
-    <button type="submit" class="submit-btn">login</button>
+    <button type="submit" class="submit-btn">Login</button>
 
-    <p class="login-link">dont have an account? <a href="/users/signup">sign up</a></p>
+    <div class="divider">
+      <span>or</span>
+    </div>
 
-   
+    <!-- Demo Login Button -->
+    <button type="submit" class="submit-btn demo-btn" formaction="/users/login" formmethod="POST" name="demo" value="true"
+      onclick="this.form.username.value='admin'; this.form.password.value='admin';">
+      Demo Login
+    </button>
+
+    <p class="login-link">Don't have an account? <a href="/users/signup">Sign up</a></p>
   </form>
-  
 </div>
-
-

@@ -325,3 +325,35 @@ body {
 .mapboxgl-control-container {
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+.divider {
+  text-align: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.divider span {
+  background: white;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.divider::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.demo-btn {
+  background-color: #6c757d;
+  color: white;
+  margin-top: 0.5rem;
+}
+
